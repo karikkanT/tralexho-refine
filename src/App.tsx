@@ -22,19 +22,8 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
-
+import { BlogPostCreate, BlogPostEdit, BlogPostList, BlogPostShow,} from "./pages/entity";
+import { CategoryCreate, CategoryEdit, CategoryList, CategoryShow,} from "./pages/categories";
 import { txo_dataProvider } from "./data-provider/dataprovider_txo";
 
 function App() {
@@ -61,10 +50,10 @@ function App() {
               resources={[
                 {
                   name: "entities",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  list: "/entity",
+                  create: "/entity/create",
+                  edit: "/entity/edit/:id",
+                  show: "/entity/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -103,9 +92,9 @@ function App() {
                   }
                 >
                   <Route
-                    // index element={<NavigateToResource resource="entities" />}
+                    index element={<NavigateToResource resource="entities" />}
                   />
-                  <Route path="/blog-posts">
+                  <Route path="/entity">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
